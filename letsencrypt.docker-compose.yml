@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  nginx:
+    container_name: le_nginx
+    build:
+      context: .
+      dockerfile: ./letsencrypt.nginx.Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - "./deploy/etc/letsencrypt:/etc/letsencrypt"
+    command: ["nginx", "-g", "daemon off;"]
+
